@@ -50,7 +50,7 @@ layout: default
                 {% endif %}
 
                 <!-- Friends Blog -->
-                {% if site.friends %}
+                <!-- {% if site.friends %}
                 <hr>
                 <h5>FRIENDS</h5>
                 <ul class="list-inline">
@@ -58,7 +58,7 @@ layout: default
                         <li><a href="{{friend.href}}">{{friend.title}}</a></li>
                     {% endfor %}
                 </ul>
-                {% endif %}
+                {% endif %} -->
             </div>
         {% else %}
 
@@ -111,6 +111,7 @@ layout: default
                             <p>{{site.sidebar-about-description}}</p>
                         {% endif %}
                         <!-- SNS Link -->
+                        <!--
                         <ul class="list-inline">
                             {% if site.RSS %}
                             <li>
@@ -122,7 +123,6 @@ layout: default
                                 </a>
                             </li>
                             {% endif %}
-                            <!-- add jianshu add target = "_blank" to <a> by BY -->
                             {% if site.jianshu_username %}
                             <li>
                                 <a target="_blank" href="https://www.jianshu.com/u/{{ site.jianshu_username }}">
@@ -185,13 +185,16 @@ layout: default
                             {% endif %}
 
                         </ul>
-                        {% if site.email %}
-                            <p>✉️ {{site.email}}</p>
-                        {% endif %}
+                        -->
+                        <hr>
+                        <div>
+                          <p>联系方式</p>
+                          <img src="/img/weixin.JPG"  alt="">
+                        </div>
                     </div>
                 </section>
                 <!-- Friends Blog -->
-                {% if site.friends %}
+                <!-- {% if site.friends %}
                 <hr>
                 <h5>FRIENDS</h5>
                 <ul class="list-inline">
@@ -199,7 +202,7 @@ layout: default
                         <li><a href="{{friend.href}}">{{friend.title}}</a></li>
                     {% endfor %}
                 </ul>
-                {% endif %}
+                {% endif %} -->
     		</div>
         {% endif %}
 	</div>

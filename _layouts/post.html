@@ -114,7 +114,7 @@ layout: default
                 <!-- disqus 评论框 end -->
                 {% endif %}
 
-            </div>  
+            </div>
 
     <!-- Side Catalog Container -->
         {% if page.catalog %}
@@ -154,17 +154,6 @@ layout: default
         				{% endfor %}
         			</div>
                 </section>
-                {% endif %}
-
-                <!-- Friends Blog -->
-                {% if site.friends %}
-                <hr>
-                <h5>FRIENDS</h5>
-                <ul class="list-inline">
-                    {% for friend in site.friends %}
-                        <li><a href="{{friend.href}}">{{friend.title}}</a></li>
-                    {% endfor %}
-                </ul>
                 {% endif %}
             </div>
         </div>
