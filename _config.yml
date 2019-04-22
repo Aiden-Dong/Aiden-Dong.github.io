@@ -62,8 +62,8 @@ kramdown:
 # Gitalk
 gitalk:
   enable: true    #是否开启Gitalk评论
-  clientID: 0c3a9891a066c572a7c6                            #生成的clientID
-  clientSecret: d81cc6b5d8d3ae877466dd7fd6cec12496546126    #生成的clientSecret
+  clientID: 0c3a9891a066c572a7c6
+  clientSecret: d81cc6b5d8d3ae877466dd7fd6cec12496546126
   repo: Aiden-Dong.github.io    #仓库名称
   owner: Aiden-Dong    #github用户名
   admin: Aiden-Dong
