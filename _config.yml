@@ -63,7 +63,7 @@ kramdown:
 gitalk:
   enable: true    #是否开启Gitalk评论
   clientID: 0c3a9891a066c572a7c6
-  clientSecret: d81cc6b5d8d3ae877466dd7fd6cec12496546126
+  clientSecret: f535a3dca8e727344d3e8454957461909d57cbbe
   repo: Aiden-Dong.github.io    #仓库名称
   owner: Aiden-Dong    #github用户名
   admin: Aiden-Dong
@@ -93,7 +93,6 @@ featured-condition-size: 1              # 相同标签数量大于这个数，�
 # Progressive Web Apps
 chrome-tab-theme-color: "#000000"
 service-worker: true
-
 
 
 # Friends
