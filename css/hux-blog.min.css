@@ -919,6 +919,16 @@ img::-moz-selection {
   background-color: #0085a1 !important
 }
 
+#tag_cloud a.tag-button--all, #tag_cloud .tag.tag-button--all {
+  font-weight: 700;
+  color: #0085a1 !important
+}
+
+#tag_cloud a.tag-button--all:hover, #tag_cloud .tag.tag-button--all:hover, #tag_cloud a.tag-button--all:active, #tag_cloud .tag.tag-button--all:active, #tag_cloud a.tag-button--all.focus, #tag_cloud .tag.tag-button--all.focus {
+  background-color: #e4e4e4 !important
+}
+
+
 @media only screen and (min-width:768px) {
   #tag_cloud {
     margin-bottom: 25px
@@ -1131,4 +1141,8 @@ img::-moz-selection {
 
 .page-fullscreen footer .copyright a:hover {
   color: #ddd
+}
+
+.d-none {
+  display: none !important
 }
