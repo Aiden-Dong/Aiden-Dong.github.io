@@ -13,6 +13,7 @@ const HOSTNAME_WHITELIST = [
   "huangxuan.me",
   "yanshuo.io",
   "cdnjs.cloudflare.com",
+  "cdn.mathjax.org",
   "aiden-dong.github.io"
 ]
 
