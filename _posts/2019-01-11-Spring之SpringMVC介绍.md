@@ -2,7 +2,7 @@
 layout:     post
 title:      Spring | MVC 技术
 subtitle:   MVC(1)介绍
-date:       2018-01-11
+date:       2019-01-11
 author:     Aiden
 header-img: img/post-bg-swift2.jpg
 catalog: true 			
