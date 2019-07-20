@@ -416,9 +416,12 @@ aux_source_directory(. DIR_SRCS)
 add_executable(Demo ${DIR_SRCS})
 target_link_libraries (Demo  ${EXTRA_LIBS})
 ```
+---
 
 > 参考资料
 
-- [CMake 入门实战 | HaHack](https://www.hahack.com/codes/cmake/)
-- [cmake 常用变量和常用环境变量查表手册---整理 . - 香格里拉\(^o^)/ - 博客园](https://www.cnblogs.com/xianghang123/p/3556425.html)
-- [cmake-env-variables(7) — CMake 3.15.0 Documentation](https://cmake.org/cmake/help/latest/manual/cmake-env-variables.7.html)
+[CMake 入门实战 HaHack](https://www.hahack.com/codes/cmake/)
+
+[cmake 常用变量和常用环境变量查表手册 - 博客园](https://www.cnblogs.com/xianghang123/p/3556425.html)
+
+[cmake-env-variables(7) — CMake 3.15.0 Documentation](https://cmake.org/cmake/help/latest/manual/cmake-env-variables.7.html)
