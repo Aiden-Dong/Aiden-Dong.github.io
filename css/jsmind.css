@@ -28,10 +28,10 @@ jmnode{position:absolute;cursor:default;max-width:400px;white-space:nowrap;overf
 jmexpander{position:absolute;width:11px;height:11px;display:block;overflow:hidden;line-height:12px;font-size:12px;text-align:center;border-radius:6px;border-width:1px;border-style:solid;cursor:pointer;}
 
 /* default theme */
-jmnode{padding:10px;background-color:#fff;color:#333;border-radius:5px;box-shadow:1px 1px 1px #666;font:16px/1.125 Verdana,Arial,Helvetica,sans-serif;}
+jmnode{padding:10px;background-color:#fff;color:#333;border-radius:5px;box-shadow:1px 1px 1px #666;font:12px/1.125 Verdana,Arial,Helvetica,sans-serif;}
 jmnode:hover{box-shadow:2px 2px 8px #000;background-color:#ebebeb;color:#333;}
 jmnode.selected{background-color:#11f;color:#fff;box-shadow:2px 2px 8px #000;}
-jmnode.root{font-size:24px;}
+jmnode.root{font-size:16px;}
 jmexpander{border-color:gray;}
 jmexpander:hover{border-color:#000;}
 
