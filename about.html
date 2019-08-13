@@ -173,7 +173,7 @@ header-img: "img/post-bg-rwd.jpg"
                                     "topic":"进程管理",
                                     "children":[
                                         {"id":"kernel21", "topic":"进程切换"},
-                                        {"id":"kernel21", "topic":"调度策略"}
+                                        {"id":"kernel22", "topic":"调度策略"}
                                     ]
                                 },
                             ]
@@ -229,8 +229,8 @@ header-img: "img/post-bg-rwd.jpg"
                                     "topic":"IPC",
                                     "children":[
                                         {"id":"ipc1", "topic":"消息队列"},
-                                        {"id":"ipc1", "topic":"信号量"},
-                                        {"id":"ipc1", "topic":"共享存储"},
+                                        {"id":"ipc2", "topic":"信号量"},
+                                        {"id":"ipc3", "topic":"共享存储"},
                                       
                                     ]
                                 }
@@ -246,7 +246,41 @@ header-img: "img/post-bg-rwd.jpg"
                         },
                         {
                             "id":"JVM",
-                            "topic":"Jvm虚拟机"
+                            "topic":"Jvm虚拟机",
+                            "children":[
+                                {
+                                    "id":"jvmMem",
+                                    "topic":"内存",
+                                    "children":[
+                                        {"id":"mem1", "topic":"内存模型"},
+                                        {"id":"mem2", "topic":"垃圾回收"}
+                                    ]
+                                },
+                                {
+                                    "id":"jvmLoad",
+                                    "topic":"类加载",
+                                    "children":[
+                                        {"id":"load1", "topic":"加载过程"},
+                                        {"id":"load2", "topic":"执行引擎"}
+                                    ]
+                                },
+                                {
+                                    "id":"jvmOperator",
+                                    "topic":"编译与优化",
+                                    "children":[
+                                        {"id":"operator1", "topic":"编译器优化"},
+                                        {"id":"operator2", "topic":"运行时优化"}
+                                    ]
+                                },
+                                {
+                                    "id":"jvmThread",
+                                    "topic":"并发",
+                                    "children":[
+                                        {"id":"thread1", "topic":"并发内存模型"},
+                                        {"id":"thread2", "topic":"线程同步与锁优化"}
+                                    ]
+                                }
+                            ]
                         }
                     ]
                 },
