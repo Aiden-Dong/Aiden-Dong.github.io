@@ -462,7 +462,12 @@ header-img: "img/post-bg-rwd.jpg"
     var stopTime = new Date();
     var intelTime = new Date(stopTime - startTime);
 
-    var strTime = (c.getFullYear() - 1970)  + '年' + (c.getMonth()) + '个月' + (c.getDate()-1) + '天' + (c.getHours()-8) + '个小时' + c.getMinutes() + '分钟' + c.getSeconds() + '秒'
+    var strTime = (intelTime.getFullYear() - 1970)  + '年' + 
+                  (intelTime.getMonth()) + '个月' + 
+                  (intelTime.getDate()-1) + '天' + 
+                  (intelTime.getHours()-8) + '个小时' + 
+                  (intelTime.getMinutes()) + '分钟' + 
+                  (intelTime.getSeconds()) + '秒'
     
     $("#dateSpan").text(strTime)
 </script>
