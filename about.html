@@ -5,6 +5,7 @@ description: "Self Introduction."
 header-img: "img/post-bg-rwd.jpg"
 ---
 <link rel="stylesheet" href="{{ " /css/jsmind.css " | prepend: site.baseurl }}">
+<script type="text/javascript" src="{{ " /js/jsmind.js " | prepend: site.baseurl }}"></script>
 
 <!-- Chinese Version -->
 <div class="zh post-container">
@@ -15,12 +16,27 @@ header-img: "img/post-bg-rwd.jpg"
 
     <p>喜欢研究技术, 探索未知, 对底层原理性知识有一种热爱</p>
 
-    <h5>Talks</h5>
+    <h5>Technology stack</h5>
 
-    <ul>
-        <!-- <li><a href="https://github.com">GitHub</a></li> -->
-    </ul>
+    <div id="technology-container"></div>
 </div>
+
+<script type="text/javascript">
+     var options = {                   
+        container:'technology-container', 
+        editable:false,               
+        theme:'orange',              
+        view:{
+            engine: 'canvas',   
+            hmargin:100,        
+            vmargin:50,         
+            line_width:2,       
+            line_color:'#555'   
+        }
+    };
+    var jm = new jsMind(options);
+    jm.show();
+</script>
 
 
 <!-- Gitalk 评论 start  -->
@@ -30,7 +46,7 @@ header-img: "img/post-bg-rwd.jpg"
 <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
 
 <div id="gitalk-container"></div>
-    <script type="text/javascript">
+<script type="text/javascript">
     var gitalk = new Gitalk({
     clientID: '{{site.gitalk.clientID}}',
     clientSecret: '{{site.gitalk.clientSecret}}',
