@@ -19,11 +19,11 @@
 }
 
 /* z-index:1 */
-svg{position:absolute;z-index:1;}
-canvas{position:absolute;z-index:1;}
+svg{position:static;z-index:1;}
+canvas{position: static;z-index:1;}
 
 /* z-index:2 */
-jmnodes{position:absolute;z-index:2;background-color:rgba(0,0,0,0);}/*background color is necessary*/
+jmnodes{position: static;z-index:2;background-color:rgba(0,0,0,0);}/*background color is necessary*/
 jmnode{position:absolute;cursor:default;max-width:400px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 jmexpander{position:absolute;width:11px;height:11px;display:block;overflow:hidden;line-height:12px;font-size:12px;text-align:center;border-radius:6px;border-width:1px;border-style:solid;cursor:pointer;}
 
