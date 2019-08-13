@@ -41,6 +41,7 @@ header-img: "img/post-bg-rwd.jpg"
             "version":"1.0"
         },
         "format":"node_tree",
+        "font-size" : "16",
         "data":
         {
             "id":"stack",
@@ -108,7 +109,43 @@ header-img: "img/post-bg-rwd.jpg"
                         },
                         {
                             "id":"design",
-                            "topic":"设计模式"
+                            "topic":"设计模式",
+                            "children":[
+                                {
+                                    "id":"createDesign",
+                                    "topic":"创建者模式",
+                                    "children":[
+                                        {"id":"crteate1","topic":"简单工厂模式"},
+                                        {"id":"crteate2","topic":"工厂方法模式"},
+                                        {"id":"crteate3","topic":"抽象工厂模式"},
+                                        {"id":"crteate4","topic":"建造者模式"},
+                                        {"id":"crteate4","topic":"单例模式"}
+                                    ]
+                                },
+                                {
+                                    "id":"structDesign",
+                                    "topic":"结构模式",
+                                    "children":[
+                                        {"id":"struct1","topic":"适配器模式"},
+                                        {"id":"struct2","topic":"桥接模式"},
+                                        {"id":"struct3","topic":"装饰器模式"},
+                                        {"id":"struct4","topic":"外观模式"},
+                                        {"id":"struct5","topic":"享元模式"},
+                                        {"id":"struct6","topic":"代理模式"},
+                                    ]
+                                },
+                                {
+                                    "id":"actionDesign",
+                                    "topic":"行为模式",
+                                    "children":[
+                                        {"id":"action1","topic":"命令模式"},
+                                        {"id":"action2","topic":"中介者模式"},
+                                        {"id":"action3","topic":"观察者模式"},
+                                        {"id":"action4","topic":"状态模式"},
+                                        {"id":"action5","topic":"策略模式"}
+                                    ]
+                                }
+                            ]
                         }
                     ]
                 },
