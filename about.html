@@ -14,12 +14,25 @@ header-img: "img/post-bg-rwd.jpg"
 
     <p>喜欢研究技术, 探索未知, 对底层原理性知识有一种热爱</p>
 
-    <h5>Talks</h5>
+    <h5>Technology stack</h5>
 
-    <ul>
-        <!-- <li><a href="https://github.com">GitHub</a></li> -->
-    </ul>
+    <div id="technology-container"></div>
 </div>
+
+
+<script type="text/javascript">
+    var mind = {
+        // 3 data format supported ...
+        // see Documents for more information
+    };
+    var options = {
+        container:'technology-container',
+        editable:true,
+        theme:'orange'
+    };
+    var jm = new jsMind(options);
+    jm.show(mind);
+</script>
 
 
 <!-- Gitalk 评论 start  -->
@@ -29,15 +42,16 @@ header-img: "img/post-bg-rwd.jpg"
 <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
 
 <div id="gitalk-container"></div>
-    <script type="text/javascript">
+
+<script type="text/javascript">
     var gitalk = new Gitalk({
-    clientID: '{{site.gitalk.clientID}}',
-    clientSecret: '{{site.gitalk.clientSecret}}',
-    repo: '{{site.gitalk.repo}}',
-    owner: '{{site.gitalk.owner}}',
-    admin: ['{{site.gitalk.admin}}'],
-    distractionFreeMode: {{site.gitalk.distractionFreeMode}},
-    id: 'blob',
+        clientID: '{{site.gitalk.clientID}}',
+        clientSecret: '{{site.gitalk.clientSecret}}',
+        repo: '{{site.gitalk.repo}}',
+        owner: '{{site.gitalk.owner}}',
+        admin: ['{{site.gitalk.admin}}'],
+        distractionFreeMode: {{site.gitalk.distractionFreeMode}},
+        id: 'blob',
     });
     gitalk.render('gitalk-container');
 </script>
