@@ -460,36 +460,9 @@ header-img: "img/post-bg-rwd.jpg"
 <script>
     var startTime = new Date("2016/12/09 09:30:00");
     var stopTime = new Date();
-    var retValue = {};
-    var date3 = stopTime.getTime() - startTime.getTime();  
+    var intelTime = new Date(stopTime - startTime);
 
-    //计算出相差天数
-    var days = Math.floor(date3 / (24 * 3600 * 1000));
-    var years = Math.floor(days / 365);
-    var months = Math.floor(days / 30);
-    var leave1 = date3 % (24 * 3600 * 1000);    
-    var hours = Math.floor(leave1 / (3600 * 1000));
-    var leave2 = leave1 % (3600 * 1000); 
-    var minutes = Math.floor(leave2 / (60 * 1000));
-    var leave3 = leave2 % (60 * 1000);      
-    var seconds = Math.round(leave3 / 1000);
-
-    var strTime = "";
-    if (years >= 1) {
-        strTime += years + "年";
-    } 
-    if (months >= 1) {
-        strTime += months + "月";
-    } 
-    if (days >= 1) {
-        strTime += days + "天";
-    } 
-    if (hours >= 1) {
-        strTime += hours + "小时";
-    } 
-    if(minutes >=1 ) {
-        strTime += minutes + "分钟";
-    }
+    var strTime = (c.getFullYear() - 1970)  + '年' + (c.getMonth()) + '个月' + (c.getDate()-1) + '天' + (c.getHours()-8) + '个小时' + c.getMinutes() + '分钟' + c.getSeconds() + '秒'
     
     $("#dateSpan").text(strTime)
 </script>
