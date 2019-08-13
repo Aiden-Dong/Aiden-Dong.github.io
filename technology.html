@@ -1,0 +1,442 @@
+---
+layout: page
+title: "Technology"
+description: "Self Introduction."
+header-img: "img/post-bg-rwd.jpg"
+---
+
+<link rel="stylesheet" href="{{ " /css/jsmind.css " | prepend: site.baseurl }}">
+<script type="text/javascript" src="{{ " /js/jsmind.js " | prepend: site.baseurl }}"></script>
+
+<div id="technology-container"></div>
+
+<script type="text/javascript">
+    var options = {                   
+       container:'technology-container', 
+       editable:false,               
+       theme:'greensea',             
+       view:{
+           engine: 'canvas',   // 思维导图各节点之间线条的绘制引擎
+           hmargin:100,        // 思维导图距容器外框的最小水平距离
+           vmargin:50,         // 思维导图距容器外框的最小垂直距离
+           line_width:2,       // 思维导图线条的粗细
+           line_color:'#555'   // 思维导图线条的颜色
+       }
+   };
+   var mind = {
+       "meta" : {
+           "name":"technology-mind",
+           "author":"gg782112163@163.com",
+           "version":"1.0"
+       },
+       "format":"node_tree",
+       "font-size" : "16",
+       "data":
+       {
+           "id":"stack",
+           "topic":"Technology Stack",
+           "children":[
+               {
+                   "id":"core",
+                   "topic":"底层支持",
+                   "direction":"left",
+                   "children":[
+                       {
+                           "id":"datastruce",
+                           "topic":"数据结构",
+                           "children":[
+                               {
+                                   "id":"line",
+                                   "topic":"线性结构",
+                                   "children":[
+                                       {"id":"line1","topic":"线性表"},
+                                       {"id":"line2","topic":"链表"},
+                                       {"id":"line3","topic":"栈"},
+                                       {"id":"line4","topic":"队列"},
+                                   ]
+                               },
+                               {
+                                   "id":"tree",
+                                   "topic":"树",
+                                   "children":[
+                                       {
+                                           "id":"tree0",
+                                           "topic":"二叉树",
+                                           "children":[
+                                               {"id":"tree1", "topic":"二叉查找树"},
+                                               {"id":"tree2", "topic":"平衡二叉树"},
+                                               {"id":"tree3", "topic":"红黑树"},
+                                           ]
+                                       },
+                                       {"id":"tree4", "topic":"B树"},
+                                       {"id":"tree5", "topic":"B+树"},
+                                       {"id":"tree6", "topic":"赫夫曼树"},
+                                   ]
+                               },
+                               {
+                                   "id":"grafe",
+                                   "topic":"图",
+                                   "children":[
+                                       {"id":"grafe1", "topic":"拓扑排序与关键路径"},
+                                       {"id":"grafe2", "topic":"最短路径问题"},
+                                       {"id":"grafe3", "topic":"最小生成树"},
+                                   ]
+                               },
+                               {
+                                   "id":"sort",
+                                   "topic":"排序",
+                                   "children":[
+                                       {"id":"sort1", "topic":"快速排序"},
+                                       {"id":"sort2", "topic":"插入排序"},
+                                       {"id":"sort3", "topic":"选择排序"},
+                                       {"id":"sort4", "topic":"冒泡排序"},
+                                       {"id":"sort5", "topic":"归并排序"},
+                                       {"id":"sort6", "topic":"堆排序"},
+                                   ]
+                               },
+                           ]
+                       },
+                       {
+                           "id":"design",
+                           "topic":"设计模式",
+                           "children":[
+                               {
+                                   "id":"createDesign",
+                                   "topic":"创建者模式",
+                                   "children":[
+                                       {"id":"crteate1","topic":"简单工厂模式"},
+                                       {"id":"crteate2","topic":"工厂方法模式"},
+                                       {"id":"crteate3","topic":"抽象工厂模式"},
+                                       {"id":"crteate4","topic":"建造者模式"},
+                                       {"id":"crteate5","topic":"单例模式"}
+                                   ]
+                               },
+                               {
+                                   "id":"structDesign",
+                                   "topic":"结构模式",
+                                   "children":[
+                                       {"id":"struct1","topic":"适配器模式"},
+                                       {"id":"struct2","topic":"桥接模式"},
+                                       {"id":"struct3","topic":"装饰器模式"},
+                                       {"id":"struct4","topic":"外观模式"},
+                                       {"id":"struct5","topic":"享元模式"},
+                                       {"id":"struct6","topic":"代理模式"},
+                                   ]
+                               },
+                               {
+                                   "id":"actionDesign",
+                                   "topic":"行为模式",
+                                   "children":[
+                                       {"id":"action1","topic":"命令模式"},
+                                       {"id":"action2","topic":"中介者模式"},
+                                       {"id":"action3","topic":"观察者模式"},
+                                       {"id":"action4","topic":"状态模式"},
+                                       {"id":"action5","topic":"策略模式"}
+                                   ]
+                               }
+                           ]
+                       }
+                   ]
+               },
+               {
+                   "id":"kernelId",
+                   "topic":"内核支持",
+                   "direction":"left",
+                   "children":[
+                       {
+                           "id":"kernel",
+                           "topic":"Linux内核",
+                           "children":[
+                               {
+                                   "id":"kernel1", 
+                                   "topic":"内存管理",
+                                   "children":[
+                                       {"id":"kernel11", "topic":"内存寻址"},
+                                       {"id":"kernel12", "topic":"页框管理"},
+                                       {"id":"kernel13", "topic":"内核地址空间"},
+                                       {"id":"kernel14", "topic":"进程地址空间"},
+                                   ]
+                               },
+                               {
+                                   "id":"kernel2", 
+                                   "topic":"进程管理",
+                                   "children":[
+                                       {"id":"kernel21", "topic":"进程切换"},
+                                       {"id":"kernel22", "topic":"调度策略"}
+                                   ]
+                               },
+                           ]
+                       },
+                       {
+                           "id":"apue",
+                           "topic":"Linux系统编程",
+                           "children":[
+                               {
+                                   "id":"apueIO",
+                                   "topic":"IO",
+                                   "children":[
+                                       {"id":"apueIO1", "topic":"同步阻塞IO(BIO)"},
+                                       {"id":"apueIO2", "topic":"同步非阻塞IO(NIO)"},
+                                       {"id":"apueIO3", "topic":"异步非阻塞IO(AIO)"},
+                                       {"id":"apueIO4", "topic":"存储映射(mmap)"},
+                                       {"id":"apueIO5", "topic":"IO多路复用"},
+                                   ]
+                               },
+                               {
+                                   "id":"apueProcess",
+                                   "topic":"进程管理",
+                                   "children":[
+                                       {"id":"apueProcess1", "topic":"进程环境"},
+                                       {"id":"apueProcess2", "topic":"子进程"},
+                                       {"id":"apueProcess3", "topic":"进程关系"},
+                                       {"id":"apueProcess4", "topic":"守护进程"}
+                                   ]
+                               },
+                               {
+                                   "id":"apueSignal",
+                                   "topic":"信号",
+                                   "children":[
+                                       {"id":"apueSignal1", "topic":"常见信号"},
+                                       {"id":"apueSignal2", "topic":"信号动作"},
+                                       {"id":"apueSignal3", "topic":"信号屏蔽"}
+                                   ]
+                               },
+                               {
+                                   "id":"apueThread",
+                                   "topic":"线程",
+                                   "children":[
+                                       {"id":"apueThread1", "topic":"线程属性"},
+                                       {"id":"apueThread2", "topic":"互斥锁"},
+                                       {"id":"apueThread3", "topic":"读写锁"},
+                                       {"id":"apueThread4", "topic":"条件变量"},
+                                       {"id":"apueThread5", "topic":"自旋锁"},
+                                       {"id":"apueThread6", "topic":"屏障"}
+                                   ]
+                               },
+                               {
+                                   "id":"apueIPC",
+                                   "topic":"IPC",
+                                   "children":[
+                                       {"id":"ipc1", "topic":"消息队列"},
+                                       {"id":"ipc2", "topic":"信号量"},
+                                       {"id":"ipc3", "topic":"共享存储"},
+                                     
+                                   ]
+                               }
+                           ]
+                       },
+                       {
+                           "id":"socket",
+                           "topic":"Linux网络编程"
+                       },
+                       {
+                           "id":"tcp/ip",
+                           "topic":"TCP/IP协议"
+                       },
+                       {
+                           "id":"JVM",
+                           "topic":"Jvm虚拟机",
+                           "children":[
+                               {
+                                   "id":"jvmMem",
+                                   "topic":"内存",
+                                   "children":[
+                                       {"id":"mem1", "topic":"内存模型"},
+                                       {"id":"mem2", "topic":"垃圾回收"}
+                                   ]
+                               },
+                               {
+                                   "id":"jvmLoad",
+                                   "topic":"类加载",
+                                   "children":[
+                                       {"id":"load1", "topic":"加载过程"},
+                                       {"id":"load2", "topic":"执行引擎"}
+                                   ]
+                               },
+                               {
+                                   "id":"jvmOperator",
+                                   "topic":"编译与优化",
+                                   "children":[
+                                       {"id":"operator1", "topic":"编译器优化"},
+                                       {"id":"operator2", "topic":"运行时优化"}
+                                   ]
+                               },
+                               {
+                                   "id":"jvmThread",
+                                   "topic":"并发",
+                                   "children":[
+                                       {"id":"thread1", "topic":"并发内存模型"},
+                                       {"id":"thread2", "topic":"线程同步与锁优化"}
+                                   ]
+                               }
+                           ]
+                       }
+                   ]
+               },
+               {
+                   "id":"language",
+                   "topic":"编程语言",
+                   "direction":"right",
+                   "children":[
+                       {
+                           "id":"c",
+                           "topic":"C语言",
+                           "children":[
+                               {"id":"c1", "topic":"基本变量"},
+                               {"id":"c2", "topic":"控制语句"},
+                               {"id":"c21", "topic":"堆栈内存"},
+                               {
+                                   "id":"c3", 
+                                   "topic":"c函数特性",
+                                   "children":[
+                                       {"id":"c31", "topic":"内联函数"},
+                                       {"id":"c32", "topic":"函数可变参数"},
+                                   ]
+                               },
+                               {"id":"c4", "topic":"宏定义"},
+                               {
+                                   "id":"c5", 
+                                   "topic":"指针",
+                                   "children":[
+                                       {"id":"c51", "topic":"指针数组"},
+                                       {"id":"c52", "topic":"数组指针"},
+                                       {"id":"c53", "topic":"函数指针"}
+                                   ]
+                               },
+                               {"id":"c6", "topic":"gcc"},
+                               {"id":"c7", "topic":"makefile"}
+                           ]
+                       },
+                       {
+                           "id":"cpp",
+                           "topic":"C++",
+                           "children":[
+                                       {"id":"cpp1", "topic":"基本变量"},
+                                       {"id":"cpp2", "topic":"控制语句"},
+                                       {
+                                           "id":"cpp3", 
+                                           "topic":"函数",
+                                           "children":[
+                                               {"id":"cpp31", "topic":"内联函数"},
+                                               {"id":"cpp32", "topic":"默认参数"},
+                                               {"id":"cpp33", "topic":"可变参数"},
+                                               {"id":"cpp34", "topic":"函数模板"},
+                                           ]
+                                       },
+                                       {"id":"cpp5", "topic":"堆栈内存"},
+                                       {"id":"cpp6", "topic":"指针"},
+                                       {"id":"cpp7", "topic":"引用"},
+                                       {
+                                           "id":"cpp8", 
+                                           "topic":"面向对象",
+                                           "children":[
+                                               {"id":"cpp81", "topic":"继承"},
+                                               {"id":"cpp82", "topic":"重载"},
+                                               {"id":"cpp83", "topic":"多态"},
+                                               {"id":"cpp84", "topic":"抽象类"},
+                                               {"id":"cpp85", "topic":"类模板"},
+                                               {"id":"cpp86", "topic":"友元"},
+                                           ]
+                                       },
+                                       {"id":"cpp9", "topic":"异常处理"},
+                                       {"id":"cpp10", "topic":"STL"},
+                                       {"id":"cpp11", "topic":"cmake"}
+                                   ]
+                       },
+                       {
+                           "id":"java",
+                           "topic":"Java",
+                           "children":[
+                               {"id":"java1", "topic":"Java基本变量"},
+                               {"id":"java2", "topic":"Java控制语句"},
+                               {"id":"java4", "topic":"Java面向对象"},
+                               {"id":"java5", "topic":"Java泛型与容器"},
+                               {"id":"java7", "topic":"Java多线程"},
+                               {"id":"java8", "topic":"maven"},
+                               {"id":"java9", "topic":"java8"},
+                               {
+                                   "id":"java6", 
+                                   "topic":"常用框架",
+                                   "children":[
+                                       {"id":"java61", "topic":"Guice"},
+                                       {"id":"java62", "topic":"Mybatis"},
+                                       {"id":"java63", "topic":"Spring"},
+                                       {"id":"java64", "topic":"SpringBoot"},
+                                       {"id":"java65", "topic":"Quartz"},
+                                       {"id":"java66", "topic":"Jetty"}
+                                   ]
+                               },
+                           ]
+                       },
+                       {
+                           "id":"python",
+                           "topic":"Python",
+                           "children":[
+                                   {"id":"python1", "topic":"基本语法"},
+                                   {"id":"python2", "topic":"面向对象"}
+                           ]
+                       },
+                       {
+                           "id":"scala",
+                           "topic":"Scala"
+                       },
+                       {
+                           "id":"bash",
+                           "topic":"Bash"
+                       }
+                   ]
+               },
+               {
+                   "id":"bigdata",
+                   "topic":"大数据",
+                   "direction":"right",
+                   "children":[
+                       {
+                           "id":"hadoop",
+                           "topic":"Hadoop",
+                           "children":[
+                                   {"id":"hadoop1", "topic":"数据流开发"},
+                                   {"id":"hadoop2", "topic":"作业优化"},
+                                   {"id":"hadoop3", "topic":"集群性能优化"},
+                                   {"id":"hadoop4", "topic":"资源管理"},
+                           ]
+                       },
+                       {
+                           "id":"spark",
+                           "topic":"Spark",
+                           "children":[
+                                   {"id":"spark1", "topic":"RDD"},
+                                   {"id":"spark2", "topic":"DataSet"},
+                                   {"id":"spark3", "topic":"DataFrame"},
+                                   {"id":"spark4", "topic":"SparkSql"}
+                           ] 
+                       },
+                       {
+                           "id":"hive",
+                           "topic":"Hive",
+                           "children":[
+                                   {"id":"hive1", "topic":"hiveSQL"},
+                                   {"id":"hive2", "topic":"hive调优"},
+                                   {"id":"hive3", "topic":"hive 执行引擎源码分析"}
+                           ] 
+                       },
+                       {
+                           "id":"druid",
+                           "topic":"Druid"
+                       },
+                       {
+                           "id":"kafka",
+                           "topic":"Kafka"
+                       },
+                       {
+                           "id":"zookeeper",
+                           "topic":"Zookeeper"
+                       }
+                   ]
+               }
+           ]
+       }
+   };
+   var jm = new jsMind(options);
+   jm.show(mind);
+</script>
