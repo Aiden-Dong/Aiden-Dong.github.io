@@ -156,11 +156,85 @@ header-img: "img/post-bg-rwd.jpg"
                     "children":[
                         {
                             "id":"kernel",
-                            "topic":"Linux内核"
+                            "topic":"Linux内核",
+                            "children":[
+                                {
+                                    "id":"kernel1", 
+                                    "topic":"内存管理",
+                                    "children":[
+                                        {"id":"kernel11", "topic":"内存寻址"},
+                                        {"id":"kernel12", "topic":"页框管理"},
+                                        {"id":"kernel13", "topic":"内核地址空间"},
+                                        {"id":"kernel14", "topic":"进程地址空间"},
+                                    ]
+                                },
+                                {
+                                    "id":"kernel2", 
+                                    "topic":"进程管理",
+                                    "children":[
+                                        {"id":"kernel21", "topic":"进程切换"},
+                                        {"id":"kernel21", "topic":"调度策略"}
+                                    ]
+                                },
+                            ]
                         },
                         {
                             "id":"apue",
-                            "topic":"Linux系统编程"
+                            "topic":"Linux系统编程",
+                            "children":[
+                                {
+                                    "id":"apueIO",
+                                    "topic":"IO",
+                                    "children":[
+                                        {"id":"apueIO1", "topic":"同步阻塞IO(BIO)"},
+                                        {"id":"apueIO2", "topic":"同步非阻塞IO(NIO)"},
+                                        {"id":"apueIO3", "topic":"异步非阻塞IO(AIO)"},
+                                        {"id":"apueIO4", "topic":"存储映射(mmap)"},
+                                        {"id":"apueIO5", "topic":"IO多路复用"},
+                                    ]
+                                },
+                                {
+                                    "id":"apueProcess",
+                                    "topic":"进程管理",
+                                    "children":[
+                                        {"id":"apueProcess1", "topic":"进程环境"},
+                                        {"id":"apueProcess2", "topic":"子进程"},
+                                        {"id":"apueProcess3", "topic":"进程关系"},
+                                        {"id":"apueProcess4", "topic":"守护进程"}
+                                    ]
+                                },
+                                {
+                                    "id":"apueSignal",
+                                    "topic":"信号",
+                                    "children":[
+                                        {"id":"apueSignal1", "topic":"常见信号"},
+                                        {"id":"apueSignal2", "topic":"信号动作"},
+                                        {"id":"apueSignal3", "topic":"信号屏蔽"}
+                                    ]
+                                },
+                                {
+                                    "id":"apueThread",
+                                    "topic":"线程",
+                                    "children":[
+                                        {"id":"apueThread1", "topic":"线程属性"},
+                                        {"id":"apueThread2", "topic":"互斥锁"},
+                                        {"id":"apueThread3", "topic":"读写锁"},
+                                        {"id":"apueThread4", "topic":"条件变量"},
+                                        {"id":"apueThread5", "topic":"自旋锁"},
+                                        {"id":"apueThread6", "topic":"屏障"}
+                                    ]
+                                },
+                                {
+                                    "id":"apueIPC",
+                                    "topic":"IPC",
+                                    "children":[
+                                        {"id":"ipc1", "topic":"消息队列"},
+                                        {"id":"ipc1", "topic":"信号量"},
+                                        {"id":"ipc1", "topic":"共享存储"},
+                                      
+                                    ]
+                                }
+                            ]
                         },
                         {
                             "id":"socket",
