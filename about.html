@@ -293,8 +293,9 @@ header-img: "img/post-bg-rwd.jpg"
                             "id":"c",
                             "topic":"C语言",
                             "children":[
-                                {"id":"c1", "topic":"c基本变量"},
-                                {"id":"c2", "topic":"c控制语句"},
+                                {"id":"c1", "topic":"基本变量"},
+                                {"id":"c2", "topic":"控制语句"},
+                                {"id":"c21", "topic":"堆栈内存"},
                                 {
                                     "id":"c3", 
                                     "topic":"c函数特性",
@@ -303,14 +304,14 @@ header-img: "img/post-bg-rwd.jpg"
                                         {"id":"c32", "topic":"函数可变参数"},
                                     ]
                                 },
-                                {"id":"c4", "topic":"c宏定义"},
+                                {"id":"c4", "topic":"宏定义"},
                                 {
                                     "id":"c5", 
-                                    "topic":"c指针",
+                                    "topic":"指针",
                                     "children":[
-                                        {"id":"c51", "topic":"c指针数组"},
-                                        {"id":"c52", "topic":"c数组指针"},
-                                        {"id":"c52", "topic":"c函数指针"}
+                                        {"id":"c51", "topic":"指针数组"},
+                                        {"id":"c52", "topic":"数组指针"},
+                                        {"id":"c52", "topic":"函数指针"}
                                     ]
                                 },
                                 {"id":"c6", "topic":"gcc"},
@@ -319,7 +320,39 @@ header-img: "img/post-bg-rwd.jpg"
                         },
                         {
                             "id":"cpp",
-                            "topic":"C++"
+                            "topic":"C++",
+                            "children":[
+                                        {"id":"cpp1", "topic":"基本变量"},
+                                        {"id":"cpp2", "topic":"控制语句"},
+                                        {
+                                            "id":"cpp3", 
+                                            "topic":"函数",
+                                            "children":[
+                                                {"id":"cpp31", "topic":"内联函数"},
+                                                {"id":"cpp31", "topic":"默认参数"},
+                                                {"id":"cpp31", "topic":"可变参数"},
+                                                {"id":"cpp31", "topic":"函数模板"},
+                                            ]
+                                        },
+                                        {"id":"cpp5", "topic":"堆栈内存"},
+                                        {"id":"cpp6", "topic":"指针"},
+                                        {"id":"cpp7", "topic":"引用"},
+                                        {
+                                            "id":"cpp8", 
+                                            "topic":"面向对象",
+                                            "children":[
+                                                {"id":"cpp81", "topic":"继承"},
+                                                {"id":"cpp82", "topic":"重载"},
+                                                {"id":"cpp83", "topic":"多态"},
+                                                {"id":"cpp84", "topic":"抽象类"},
+                                                {"id":"cpp85", "topic":"类模板"},
+                                                {"id":"cpp86", "topic":"友元"},
+                                            ]
+                                        },
+                                        {"id":"cpp9", "topic":"异常处理"},
+                                        {"id":"cpp10", "topic":"STL"},
+                                        {"id":"cpp11", "topic":"cmake"}
+                                    ]
                         },
                         {
                             "id":"java",
@@ -348,7 +381,11 @@ header-img: "img/post-bg-rwd.jpg"
                         },
                         {
                             "id":"python",
-                            "topic":"Python"
+                            "topic":"Python",
+                            "children":[
+                                    {"id":"python1", "topic":"基本语法"},
+                                    {"id":"python2", "topic":"面向对象"}
+                            ]
                         },
                         {
                             "id":"scala",
@@ -367,15 +404,32 @@ header-img: "img/post-bg-rwd.jpg"
                     "children":[
                         {
                             "id":"hadoop",
-                            "topic":"Hadoop"
+                            "topic":"Hadoop",
+                            "children":[
+                                    {"id":"hadoop1", "topic":"数据流开发"},
+                                    {"id":"hadoop2", "topic":"作业优化"},
+                                    {"id":"hadoop3", "topic":"集群性能优化"},
+                                    {"id":"hadoop4", "topic":"资源管理"},
+                            ]
                         },
                         {
                             "id":"spark",
-                            "topic":"Spark"
+                            "topic":"Spark",
+                            "children":[
+                                    {"id":"spark1", "topic":"RDD"},
+                                    {"id":"spark2", "topic":"DataSet"},
+                                    {"id":"spark3", "topic":"DataFrame"},
+                                    {"id":"spark3", "topic":"SparkSql"}
+                            ] 
                         },
                         {
                             "id":"hive",
-                            "topic":"Hive"
+                            "topic":"Hive",
+                            "children":[
+                                    {"id":"hive1", "topic":"hiveSQL"},
+                                    {"id":"hive2", "topic":"hive调优"},
+                                    {"id":"hive3", "topic":"hive 执行引擎源码分析"}
+                            ] 
                         },
                         {
                             "id":"druid",
