@@ -1,12 +1,24 @@
 ---
 layout: default
 title: "Technology"
-description: "Self Introduction."
+description: "Aiden Technology"
 header-img: "img/post-bg-rwd.jpg"
 ---
-
 <link rel="stylesheet" href="{{ " /css/jsmind.css " | prepend: site.baseurl }}">
 <script type="text/javascript" src="{{ " /js/jsmind.js " | prepend: site.baseurl }}"></script>
+
+<header class="intro-header" style="background-image: url('{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="site-heading" id="tag-heading">
+                    <h1>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</h1>
+                    <span class="subheading">{{ page.description }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
 
 <div id="technology-container"></div>
 
