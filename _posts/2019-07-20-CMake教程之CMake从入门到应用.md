@@ -18,7 +18,7 @@ tags:
 
 #### 项目部署
 
-![cmake-project.png](https://i.loli.net/2019/07/20/5d332a936055725652.png)
+![image.png]({{ site.url }}/assets/cmake_1.png)
 
 > **c/c++** 项目工程部署如上:
 
