@@ -113,7 +113,7 @@ public class FirstExample {
 
 简单吧。
 
-##### 2.1 从xml中获取 SqlSessionFaction:
+##### 2.1 从`xml`中获取 SqlSessionFaction:
 
 ```
 String resource = "org/mybatis/example/mybatis-config.xml";
@@ -171,8 +171,8 @@ SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(input
 - **mappers** :
 表示映射文件列表，前面提到通常我们针对数据库中每张表，都会建立一个映射文件。
 而在mappers元素中，就通过mapper元素，列出了所有配置文件的路径。例如mapper元素可以通过以下属性指定映射文件的路径：
-   resource属性：表示映射文件位于classpath下。例如上面的配置中就表示在classpath的mappers目录下，有一个UserMapper.xml映射文件
-   url属性：使用完全限定资源定位符指定映射文件路径，如file:///var/mappers/uthorMapper.xml
+   resource属性：表示映射文件位于classpath下。例如上面的配置中就表示在classpath的mappers目录下，有一个 `UserMapper.xml` 映射文件
+   url属性：使用完全限定资源定位符指定映射文件路径，如 `file:///var/mappers/uthorMapper.xml`
    class属性：通过java类来配置映射关系，可以一个java映射类对应一个xml映射文件
    package：如果有多个java映射类，且位于同一个包下面，我们可以直接使用package属性指定包名，不需要为每个java映射配置一个class属性。
 

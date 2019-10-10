@@ -29,6 +29,8 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
+.jekyll-cache
+
 # End of https://www.gitignore.io/api/macos
 
 # debug file
