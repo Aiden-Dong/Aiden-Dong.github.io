@@ -146,11 +146,9 @@ layout: default
                     <h5><a href="/archive">FEATURED TAGS</a></h5>
                     <div class="tags">
         				{% for tag in site.tags %}
-                            {% if tag[1].size > {{site.featured-condition-size}} %}
-                				<a href="/archive/?tag={{ tag[0] }}" title="{{ tag[0] }}" rel="{{ tag[1].size }}">
-                                    {{ tag[0] }}
-                                </a>
-                            {% endif %}
+                            <a href="/archive/?tag={{ tag[0] }}" title="{{ tag[0] }}" rel="{{ tag[1].size }}">
+                                {{ tag[0] }}
+                            </a>
         				{% endfor %}
         			</div>
                 </section>
