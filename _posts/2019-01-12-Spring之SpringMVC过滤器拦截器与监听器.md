@@ -77,16 +77,11 @@ public class ServletFilter implements Filter {
 http://localhost:8080/servlet/servlet2.action
 ```
 
-![](https://img-blog.csdn.net/20170712155601108?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvZ2ZkNTRnZDVmNDY=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+![image.png]({{ site.url }}/assets/spring_5_1.png)
 
 #### 控制台输出:
 
-![](https://img-blog.csdn.net/20170712155608597?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvZ2ZkNTRnZDVmNDY=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
-
-![](https://img-blog.csdn.net/20170712155615578?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvZ2ZkNTRnZDVmNDY=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
-
-![](https://img-blog.csdn.net/20170712155626739?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvZ2ZkNTRnZDVmNDY=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
-
+![image.png]({{ site.url }}/assets/spring_5_2.png)
 
 ### 2. 监听器 Listener:
 
@@ -132,7 +127,7 @@ public class ContextListener implements ServletContextListener {
 
 #### 项目启动的时候 监听器是先被初始化的:
 
-![](https://img-blog.csdn.net/20170712155651955?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvZ2ZkNTRnZDVmNDY=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+![image.png]({{ site.url }}/assets/spring_5_3.png)
 
 
 ### 拦截器:
