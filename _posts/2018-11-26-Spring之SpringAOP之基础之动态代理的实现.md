@@ -16,7 +16,7 @@ tags:
 
 对于动态代理的理解可以借鉴普通**代理模式**。我们普通的Java代理需要为一个对象建立专门的代理对象，通过调用代理对象，来实现原对象的各种功能。
 
-![image.png](https://upload-images.jianshu.io/upload_images/10402860-75f9eb2c85d878bf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![image.png]({{ site.url }}/assets/spring_3_1.png)
 
 而动态代理区别于普通代理方式,动态代理是在运行时产生的代理类。
 

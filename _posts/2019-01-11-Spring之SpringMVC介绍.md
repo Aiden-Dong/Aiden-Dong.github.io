@@ -16,7 +16,7 @@ tags:
 
 Spring web mvc和Struts2都属于表现层的框架,它是Spring框架的一部分,我们可以从Spring的整体结构中看得出来:
 
-![](https://upload-images.jianshu.io/upload_images/763193-6dbbea6d7ab9617e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700)
+![image.png]({{ site.url }}/assets/spring_4_1.png)
 
 ### 2.Web mvc
 
@@ -25,14 +25,14 @@ Spring web mvc和Struts2都属于表现层的框架,它是Spring框架的一部�
 3. **模型(Model)** 在通过**视图适配器(ViewResolver)**,将Model转成用户需要的**视图(View)**。
 4. 控制器将视图response响应给用户,通过视图展示给用户要的数据或处理结果。
 
-![image.png](https://upload-images.jianshu.io/upload_images/10402860-38af0f2301984a4f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![image.png]({{ site.url }}/assets/spring_4_2.png)
 
 
 ### 3. Spring Web MVC 框架
 
 架构图:
 
-![image.png](https://upload-images.jianshu.io/upload_images/10402860-03c7fc280c9090d5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/600)
+![image.png]({{ site.url }}/assets/spring_4_3.png)
 
 **流程 :**
 
