@@ -377,7 +377,7 @@ sys.value:20
 
 ### Bean 的生命周期
 
-![image.png](https://upload-images.jianshu.io/upload_images/10402860-019894c801ae7cda.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![image.png]({{ site.url }}/assets/spring_1_1.png)
 
 > **Spring IOC 容器对 Bean 的生命周期进行管理的过程** :
 
