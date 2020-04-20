@@ -18,7 +18,7 @@ sidebar-avatar: /img/author.jpg      # use absolute URL, seeing it's used in bot
 
 
 # SNS settings
-RSS: false
+RSS: true
 csdn_username: gg782112163
 jianshu_username:   bfcb1c2abd1a
 mail_username: 782112163@qq.com
