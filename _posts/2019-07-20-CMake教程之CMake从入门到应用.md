@@ -111,8 +111,9 @@ EXECUTABLE_OUTPUT_PATH , LIBRARY_OUTPUT_PATH| 最终目标文件存放的路径�
 PROJECT_NAME | 通过 PROJECT 指令定义的项目名称。
 
 **cmake 系统信息**
+
 系统信息变量名 | 描述
--- | ---
+--- | ---
 CMAKE_MAJOR_VERSION | CMAKE 主版本号,比如 2.4.6 中的 2
 CMAKE_MINOR_VERSION | CMAKE 次版本号,比如 2.4.6 中的 4
 CMAKE_PATCH_VERSION | CMAKE 补丁等级,比如 2.4.6 中的 6
