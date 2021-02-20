@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      Spring | AOP的切面编程技术 AspectJ
+title:      Spring 教程 | AOP的切面编程技术 AspectJ
 subtitle:   AOP篇(2)切面编程技术 AspectJ
 date:       2018-12-23
 author:     Aiden

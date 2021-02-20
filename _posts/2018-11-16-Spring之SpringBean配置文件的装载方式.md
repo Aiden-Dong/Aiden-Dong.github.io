@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      Spring | Bean之配置文件的装载方式
+title:      Spring 教程 | Bean之配置文件的装载方式
 subtitle:   Bean篇(1)配置文件的装载方式
 date:       2018-11-16
 author:     Aiden

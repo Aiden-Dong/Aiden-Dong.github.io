@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      Mybatis | Mybatis 配置与初始化
+title:      Mybatis 教程| Mybatis 配置与初始化
 subtitle:   
 date:       2018-08-25
 author:     Aiden

@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      Spring | MVC 技术
+title:      Spring 教程 | MVC 技术
 subtitle:   MVC(1)介绍
 date:       2019-01-11
 author:     Aiden

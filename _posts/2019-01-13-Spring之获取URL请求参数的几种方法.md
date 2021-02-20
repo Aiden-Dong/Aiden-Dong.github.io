@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      Spring | MVC 获取URL请求参数的几种方法
+title:      Spring  教程 | MVC 获取URL请求参数的几种方法
 subtitle:   MVC(3)过滤器拦截器与监听器
 date:       2019-01-13
 author:     Aiden

@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      Spring | AOP之基础之动态代理的实现
+title:      Spring 教程| AOP之基础之动态代理的实现
 subtitle:   AOP篇(1)基础之动态代理的实现
 date:       2018-11-26
 author:     Aiden

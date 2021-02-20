@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      Spring | Bean之注解配置形式
+title:      Spring 教程| Bean之注解配置形式
 subtitle:   Bean篇(2)注解配置形式
 date:       2018-11-20
 author:     Aiden

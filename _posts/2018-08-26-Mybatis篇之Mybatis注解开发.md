@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      Mybatis | Mybatis 注解开发方式
+title:      Mybatis 教程| Mybatis 注解开发方式
 subtitle:   
 date:       2018-08-26
 author:     Aiden
