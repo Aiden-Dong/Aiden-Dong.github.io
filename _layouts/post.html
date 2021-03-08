@@ -123,26 +123,24 @@ layout: default
             visible-lg-block
             sidebar-container
             catalog-container">
-            {% if page.catalog %}
+            
             <div class="side-catalog">
+                {% if page.catalog %}
                 <hr class="hidden-sm hidden-xs">
                 <h5>
                     <a class="catalog-toggle" href="#">CATALOG</a>
                 </h5>
                 <ul class="catalog-body"></ul>
-            </div>
-            {% endif %}
-            <!-- Short About -->
-            <div class="side-catalog">
+                {% endif %}
                 <hr><h5><a href="{{'/about/' | prepend: site.baseurl }}">ABOUT ME</a></h5>
                 <div class="short-about">
                     {% if site.sidebar-avatar %}
-                        <a href="{{ site.baseurl }}/about">
-                            <img src="{{site.sidebar-avatar}}"/>
-                        </a>
+                    <a href="{{ site.baseurl }}/about">
+                        <img src="{{site.sidebar-avatar}}"/>
+                    </a>
                     {% endif %}
                     {% if site.sidebar-about-description %}
-                        <p>{{site.sidebar-about-description}}</p>
+                    <p>{{site.sidebar-about-description}}</p>
                     {% endif %}
                     <hr>
                     <div>
@@ -151,6 +149,9 @@ layout: default
                     </div>
                 </div>
             </div>
+            
+            <!-- Short About -->
+            
         </div>
         
     <!-- Sidebar Container -->
