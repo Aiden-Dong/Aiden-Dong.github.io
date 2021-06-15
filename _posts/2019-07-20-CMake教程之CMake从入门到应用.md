@@ -26,7 +26,6 @@ tags:
 - `ext` : 第三方依赖库文件与头文件
 - `CMakeLists.txt` : cmake 构建配置文件
 
-
 #### 简单案例
 
 
@@ -149,6 +148,49 @@ CMAKE_CXX_FLAGS | 设置 C++编译选项,也可以通过指令 ADD_DEFINITIONS()
 
 定义 target 依赖的其他 target, 确保在编译本 target 之前,其他的 target 已经被构建。
 
+- **AUX_SOURCE_DIRECTORY**
+
+语法 : `AUX_SOURCE_DIRECTORY(dir VARIABLE)`
+
+作用是发现一个目录下所有的源代码文件并将列表存储在一个变量中,这个指令临时被用来自动构建源文件列表。因为目前 cmake 还不能自动发现新添加的源文件。
+
+比如 :
+```
+AUX_SOURCE_DIRECTORY(. SRC_LIST)
+ADD_EXECUTABLE(main ${SRC_LIST})
+```
+
+- **ADD_SUBDIRECTORY**
+
+语法 : `ADD_SUBDIRECTORY(NAME)`
+添加一个文件夹进行编译，该文件夹下的 CMakeLists.txt 负责编译该文件夹下的源码.
+NAME是想对于调用add_subdirectory的CMakeListst.txt的相对路径．
+
+- **find_package**
+
+语法 : `find_package(<PackageName> [version] [EXACT] [QUIET] [MODULE]
+             [REQUIRED] [[COMPONENTS] [components...]]
+             [OPTIONAL_COMPONENTS components...]
+             [NO_POLICY_SCOPE])`
+
+查找并从外部项目加载设置。 `<PackageName>_FOUND` 将设置为指示是否找到该软件包。 找到软件包后，将通过软件包本身记录的变量和“导入的目标”提供特定于软件包的信息。 该`QUIET`选项禁用信息性消息，包括那些如果未找到则表示无法找到软件包的消息`REQUIRED``。REQUIRED`如果找不到软件包，该选项将停止处理并显示一条错误消息。
+
+`COMPONENTS`选件后（或`REQUIRED`选件后，如果有的话）可能会列出所需组件的特定于包装的列表 。后面可能会列出其他可选组件`OPTIONAL_COMPONENTS`。可用组件及其对是否认为找到包的影响由目标包定义。
+
+- **include_directories**
+
+语法 : `include_directories([AFTER|BEFORE] [SYSTEM] dir1 [dir2 ...])`
+
+将给定目录添加到编译器用来搜索包含文件的目录中。相对路径被解释为相对于当前源目录。
+
+包含目录添加到 `INCLUDE_DIRECTORIES` 当前`CMakeLists`文件的目录属性。它们也被添加到`INCLUDE_DIRECTORIES`当前`CMakeLists`文件中每个目标的target属性。目标属性值是生成器使用的属性值。
+
+- **link_libraries**
+
+语法 : `link_libraries([item1 [item2 [...]]]
+               [[debug|optimized|general] <item>] ...)`
+
+将库链接到以后添加的所有目标。
 
 - **ADD_EXECUTABLE**
 
@@ -165,12 +207,6 @@ CMAKE_CXX_FLAGS | 设置 C++编译选项,也可以通过指令 ADD_DEFINITIONS()
 `STATIC`,`SHARED` 或者 `MODULE` 可以指定要创建的库的类型。
 STATIC库是链接其他目标时使用的目标文件的存档。 SHARED库是动态链接的，并在运行时加载
 
-- **ADD_SUBDIRECTORY**
-
-语法 : `ADD_SUBDIRECTORY(NAME)`
-添加一个文件夹进行编译，该文件夹下的 CMakeLists.txt 负责编译该文件夹下的源码.
-NAME是想对于调用add_subdirectory的CMakeListst.txt的相对路径．
-
 - **ENABLE_TESTING**
 
 语法: `ENABLE_TESTING()`.
@@ -186,25 +222,12 @@ NAME是想对于调用add_subdirectory的CMakeListst.txt的相对路径．
 后面连接传递给可执行文件的参数。
 如果没有在同一个 CMakeLists.txt 中打开`ENABLE_TESTING()`指令, 任何 `ADD_TEST` 都是无效的。
 
-- **AUX_SOURCE_DIRECTORY**
-
-语法 : `AUX_SOURCE_DIRECTORY(dir VARIABLE)`
-
-作用是发现一个目录下所有的源代码文件并将列表存储在一个变量中,这个指令临时被用来自动构建源文件列表。因为目前 cmake 还不能自动发现新添加的源文件。
-
-比如 :
-```
-AUX_SOURCE_DIRECTORY(. SRC_LIST)
-ADD_EXECUTABLE(main ${SRC_LIST})
-```
-
 - **CMAKE_MINIMUM_REQUIRED**
 
 语法 : `CMAKE_MINIMUM_REQUIRED`
 定义 cmake 的最低兼容版本
 比如 `CMAKE_MINIMUM_REQUIRED(VERSION 2.5 FATAL_ERROR)`
 如果 cmake 版本小与 2.5,则出现严重错误,整个过程中止。
-
 
 - **EXEC_PROGRAM**
 
