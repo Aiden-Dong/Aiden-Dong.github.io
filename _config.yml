@@ -3,12 +3,12 @@ title: Aiden Blog
 SEOTitle: Aiden Blog
 header-img: img/post-bg-desk.jpg
 description: "路漫漫其修远兮，吾将上下而求索."
-keyword: "Aiden, Aiden Blog, 大数据, Linux, Java"
-url: "http://aiden-dong.github.io"          # your host, for absolute URL
+keyword: "Aiden, Aiden Blog, 董涛, 大数据, Linux, Java, Ai"
+url: "http://aiden-dong.gitee.io"          # your host, for absolute URL
 baseurl: ""      # for example, '/blog' if your blog hosted on 'host/blog'
 
-github_repo: "https://github.com/Aiden-Dong/Aiden-Dong.github.io" # you code repository
-github_username: Aiden-Dong
+github_repo: "https://gitee.com/aiden-dong/aiden-dong" # you code repository
+github_username: aiden-dong
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
@@ -60,7 +60,8 @@ gitalk:
   enable: true    #是否开启Gitalk评论
   clientID: 0c3a9891a066c572a7c6
   clientSecret: f535a3dca8e727344d3e8454957461909d57cbbe
-  repo: Aiden-Dong.github.io    #仓库名称
+  intensedebateId: c0860ed5021a621854d4aaa0b7dcbbf4
+  repo: aiden-dong    #仓库名称
   owner: Aiden-Dong    #github用户名
   admin: Aiden-Dong
   distractionFreeMode: true #是否启用类似FB的阴影遮罩
@@ -70,7 +71,7 @@ gitalk:
 
 # Analytics settings
 # Baidu Analytics
-ba_track_id: 08e444bce5922870970f7769f063a570
+ba_track_id: 6fbcdd884553ff17a61812655eaa0180
 #
 # # Google Analytics
 # ga_track_id: 'UA-90855596-1'            # Format: UA-xxxxxx-xx
@@ -85,21 +86,3 @@ featured-condition-size: 0              # 相同标签数量大于这个数，�
 # Progressive Web Apps
 chrome-tab-theme-color: "#000000"
 service-worker: true
-
-
-# Friends
-# friends: [
-#     {
-#         title: "WY",
-#         href: "http://zhengwuyang.com"
-#     },{
-#         title: "简书·BY",
-#         href: "http://www.jianshu.com/u/e71990ada2fd"
-#     },{
-#         title: "Apple",
-#         href: "https://apple.com"
-#     },{
-#         title: "Apple Developer",
-#         href: "https://developer.apple.com/"
-#     }
-# ]
