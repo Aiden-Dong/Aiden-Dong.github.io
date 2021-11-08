@@ -30,29 +30,22 @@ header-img: "img/post-bg-rwd.jpg"
 </div>
 
 <!-- Gitalk 评论 start  -->
-{% if site.gitalk.enable %}
-<!-- Gitalk link  -->
-<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
 
-<div id="gitalk-container"></div>
-<script>
-    var idcomments_acct = 'c0860ed5021a621854d4aaa0b7dcbbf4';
-    var idcomments_post_id;
-    var idcomments_post_url;
-    </script>
-    <script type="text/javascript" src="https://www.intensedebate.com/js/genericLinkWrapperV2.js"></script>
-{% endif %}
-<!-- Gitalk end -->
+<section class="comment-area">
+    <div class="comment-wrapper">
+        <div id="disqus_thread" class="article-comments"></div>
 
- <!-- disqus 评论框 start  -->
-{% if site.disqus.enable %}
-
-<div class="comment">
-    <div id="disqus_thread" class="disqus-thread">
+        <script>
+            var idcomments_acct = 'c0860ed5021a621854d4aaa0b7dcbbf4';
+            var idcomments_post_id;
+            var idcomments_post_url;
+        </script>
+        <span id="IDCommentsPostTitle" style="display: none;"></span>
+        <script type="text/javascript" src="https://www.intensedebate.com/js/genericLinkWrapperV2.js"></script>
     </div>
-</div>
-<!-- disqus 评论框 end -->
+</section>
+
+
 
 <!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
