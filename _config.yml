@@ -51,22 +51,6 @@ kramdown:
 
 
 
-# 评论系统
-# Disqus（https://disqus.com/）
-# disqus_username: qiubaiying
-
-# Gitalk
-gitalk:
-  enable: true    #是否开启Gitalk评论
-  clientID: 0c3a9891a066c572a7c6
-  clientSecret: f535a3dca8e727344d3e8454957461909d57cbbe
-  intensedebateId: c0860ed5021a621854d4aaa0b7dcbbf4
-  repo: aiden-dong    #仓库名称
-  owner: Aiden-Dong    #github用户名
-  admin: Aiden-Dong
-  distractionFreeMode: true #是否启用类似FB的阴影遮罩
-
-
 # 统计
 
 # Analytics settings
