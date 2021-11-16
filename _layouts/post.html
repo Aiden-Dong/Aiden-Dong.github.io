@@ -49,116 +49,118 @@ layout: default
 
 <!-- Post Content -->
 <article>
-    <div class="container" id="particles-js">
-        <div class="row">
+    <div id="particles-js">
+        <div class="container" >
+            <div class="row">
 
-    <!-- Post Container -->
-            <div class="
-                col-lg-8 col-lg-offset-2
-                col-md-10 col-md-offset-1
-                post-container">
+        <!-- Post Container -->
+                <div class="
+                    col-lg-8 col-lg-offset-2
+                    col-md-10 col-md-offset-1
+                    post-container">
 
-				{{ content }}
+                    {{ content }}
 
-                <hr style="visibility: hidden;">
+                    <hr style="visibility: hidden;">
 
-                <ul class="pager">
-                    {% if page.previous.url %}
-                    <li class="previous">
-                        <a href="{{ page.previous.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{page.previous.title}}">
-                        Previous<br>
-                        <span>{{page.previous.title}}</span>
-                        </a>
-                    </li>
-                    {% endif %}
-                    {% if page.next.url %}
-                    <li class="next">
-                        <a href="{{ page.next.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{page.next.title}}">
-                        Next<br>
-                        <span>{{page.next.title}}</span>
-                        </a>
-                    </li>
-                    {% endif %}
-                </ul>
-
-
-                <section class="comment-area">
-                    <div class="comment-wrapper">
-                        <div id="disqus_thread" class="article-comments"></div>
-                        <script>
-                            var idcomments_acct = 'c0860ed5021a621854d4aaa0b7dcbbf4';
-                            var idcomments_post_id;
-                            var idcomments_post_url;
-                        </script>
-                        <span id="IDCommentsPostTitle" style="display:none"></span>
-                        <script type='text/javascript' src='https://www.intensedebate.com/js/genericCommentWrapperV2.js'></script>
-                    </div>
-                </section>
-
-                {% if site.disqus_username %}
-                <!-- disqus 评论框 start -->
-                <div class="comment">
-                    <div id="disqus_thread" class="disqus-thread"></div>
-                </div>
-                <!-- disqus 评论框 end -->
-                {% endif %}
-
-            </div>
-
-    <!-- Side Catalog Container -->
-        
-        <div class="
-            col-lg-2 col-lg-offset-0
-            visible-lg-block
-            sidebar-container
-            catalog-container">
-            
-            <div class="side-catalog">
-                {% if page.catalog %}
-                <hr class="hidden-sm hidden-xs">
-                <h5>
-                    <a class="catalog-toggle" href="#">CATALOG</a>
-                </h5>
-                <ul class="catalog-body"></ul>
-                {% endif %}
-                <hr><h5><a href="{{'/about/' | prepend: site.baseurl }}">ABOUT ME</a></h5>
-                <div class="short-about">
-                    {% if site.sidebar-avatar %}
-                    <a href="{{ site.baseurl }}/about">
-                        <img src="{{site.sidebar-avatar}}"/>
-                    </a>
-                    {% endif %}
-                    {% if site.sidebar-about-description %}
-                    <p>{{site.sidebar-about-description}}</p>
-                    {% endif %}
-                    <hr>
-                </div>
-            </div>
-            
-            <!-- Short About -->
-            
-        </div>
-        
-    <!-- Sidebar Container -->
-            <div class="
-                col-lg-8 col-lg-offset-2
-                col-md-10 col-md-offset-1
-                sidebar-container">
-
-                <!-- Featured Tags -->
-                {% if site.featured-tags %}
-                <section>
-                    <hr class="hidden-sm hidden-xs">
-                    <h5><a href="/archive">FEATURED TAGS</a></h5>
-                    <div class="tags">
-        				{% for tag in site.tags %}
-                            <a href="/archive/?tag={{ tag[0] }}" title="{{ tag[0] }}" rel="{{ tag[1].size }}">
-                                {{ tag[0] }}
+                    <ul class="pager">
+                        {% if page.previous.url %}
+                        <li class="previous">
+                            <a href="{{ page.previous.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{page.previous.title}}">
+                            Previous<br>
+                            <span>{{page.previous.title}}</span>
                             </a>
-        				{% endfor %}
-        			</div>
-                </section>
-                {% endif %}
+                        </li>
+                        {% endif %}
+                        {% if page.next.url %}
+                        <li class="next">
+                            <a href="{{ page.next.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{page.next.title}}">
+                            Next<br>
+                            <span>{{page.next.title}}</span>
+                            </a>
+                        </li>
+                        {% endif %}
+                    </ul>
+
+
+                    <section class="comment-area">
+                        <div class="comment-wrapper">
+                            <div id="disqus_thread" class="article-comments"></div>
+                            <script>
+                                var idcomments_acct = 'c0860ed5021a621854d4aaa0b7dcbbf4';
+                                var idcomments_post_id;
+                                var idcomments_post_url;
+                            </script>
+                            <span id="IDCommentsPostTitle" style="display:none"></span>
+                            <script type='text/javascript' src='https://www.intensedebate.com/js/genericCommentWrapperV2.js'></script>
+                        </div>
+                    </section>
+
+                    {% if site.disqus_username %}
+                    <!-- disqus 评论框 start -->
+                    <div class="comment">
+                        <div id="disqus_thread" class="disqus-thread"></div>
+                    </div>
+                    <!-- disqus 评论框 end -->
+                    {% endif %}
+
+                </div>
+
+        <!-- Side Catalog Container -->
+            
+            <div class="
+                col-lg-2 col-lg-offset-0
+                visible-lg-block
+                sidebar-container
+                catalog-container">
+                
+                <div class="side-catalog">
+                    {% if page.catalog %}
+                    <hr class="hidden-sm hidden-xs">
+                    <h5>
+                        <a class="catalog-toggle" href="#">CATALOG</a>
+                    </h5>
+                    <ul class="catalog-body"></ul>
+                    {% endif %}
+                    <hr><h5><a href="{{'/about/' | prepend: site.baseurl }}">ABOUT ME</a></h5>
+                    <div class="short-about">
+                        {% if site.sidebar-avatar %}
+                        <a href="{{ site.baseurl }}/about">
+                            <img src="{{site.sidebar-avatar}}"/>
+                        </a>
+                        {% endif %}
+                        {% if site.sidebar-about-description %}
+                        <p>{{site.sidebar-about-description}}</p>
+                        {% endif %}
+                        <hr>
+                    </div>
+                </div>
+                
+                <!-- Short About -->
+                
+            </div>
+            
+        <!-- Sidebar Container -->
+                <div class="
+                    col-lg-8 col-lg-offset-2
+                    col-md-10 col-md-offset-1
+                    sidebar-container">
+
+                    <!-- Featured Tags -->
+                    {% if site.featured-tags %}
+                    <section>
+                        <hr class="hidden-sm hidden-xs">
+                        <h5><a href="/archive">FEATURED TAGS</a></h5>
+                        <div class="tags">
+                            {% for tag in site.tags %}
+                                <a href="/archive/?tag={{ tag[0] }}" title="{{ tag[0] }}" rel="{{ tag[1].size }}">
+                                    {{ tag[0] }}
+                                </a>
+                            {% endfor %}
+                        </div>
+                    </section>
+                    {% endif %}
+                </div>
             </div>
         </div>
     </div>
