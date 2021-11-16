@@ -1,0 +1,10 @@
+#particles-js{
+    position:"relative"
+}
+
+canvas.particles-js-canvas-el{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: -1;
+}
