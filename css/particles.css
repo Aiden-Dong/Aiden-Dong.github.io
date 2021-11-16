@@ -1,5 +1,5 @@
-#particles-js{
-    position:"relative"
+div#particles-js{
+    position: relative;
 }
 
 canvas.particles-js-canvas-el{
