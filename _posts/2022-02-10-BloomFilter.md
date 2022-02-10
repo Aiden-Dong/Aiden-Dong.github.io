@@ -5,8 +5,8 @@ subtitle:
 date:       2022-02-10
 author:     Aiden
 header-img: img/post-bg-mma-1.jpg
-catalog: true  |  |  | 
-tags: |  |  |  |  |  |  |  | 
+catalog: true  
+tags:
     - olap
 ---
 
