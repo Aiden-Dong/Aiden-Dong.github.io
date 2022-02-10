@@ -181,7 +181,7 @@ $$\frac{m}{n}\ln{2}\approx0.7\frac{m}{n}$$
 
 ##### 实现部分
 
-```cpp
+```c
 class BloomFilterPolicy final : public FilterPolicy {
  public:
   explicit BloomFilterPolicy(int bits_per_key) : bits_per_key_(bits_per_key) {
@@ -284,7 +284,7 @@ class BloomFilterPolicy final : public FilterPolicy {
 
 ##### 测试程序
 
-```cpp
+```c
 class BloomTest final {
  public:
   BloomTest(uint32_t bit_per_key = 10)
