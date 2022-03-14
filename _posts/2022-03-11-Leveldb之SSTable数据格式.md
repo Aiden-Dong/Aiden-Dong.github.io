@@ -480,7 +480,10 @@ Status TableBuilder::Finish() {
 
 #### 数据读取
 
-**IndexBlock**, **MetaIndexBlock**,**DataBlock**的数据解析都是通过 `Block::Iter`, 它通过 **二分查找** ，快速定位key, 并获取Value.
+
+##### 每个部分的 Block 的数据读取过程
+
+**IndexBlock**, **MetaIndexBlock**,**DataBlock** 的数据解析都是通过 `Block::Iter`, 它通过 **二分查找** ，快速定位key, 并获取Value.
 
 它首先基于每个重置索引，在所有的重置点基于二分查找，比较每个重置点第一个key(因为第一个key是完整的)。粗略定位到 key 的大致位置， 然后在缩小范围，精确查找 Key，Value.
 
@@ -560,4 +563,202 @@ Status TableBuilder::Finish() {
   }
 ```
 
+整个数据块(**IndexBlock**, **MetaIndexBlock**或某个**DataBlock**) 首先通过已知的偏移位置通过 `RandomAccessFile` 从文件读取到内存中，形成一个 `BlockContents`, 它主要是将序列化的数据流读取到内存中形成的一个字节数组。
 
+而后基于数据块的数据结构， 我们封装了这个 `Block` 类， 用来解析并查询这个数据块。
+
+```cpp
+/***
+ * 从文件中读取一个 Block 并 填充到 BlockContents 中
+ * 
+ * @param file    sst 文件
+ * @param options 文件读取选项
+ * @param handle  Block 的偏移元信息
+ * @param result  将Block 转换为一个  BlockContests
+ */
+Status ReadBlock(RandomAccessFile* file, const ReadOptions& options, const BlockHandle& handle, BlockContents* result) {
+
+  result->data = Slice();
+  result->cachable = false;
+  result->heap_allocated = false;
+
+  // kBlockTrailerSize 是 压缩标识 + crc校验 
+  size_t n = static_cast<size_t>(handle.size());
+  char* buf = new char[n + kBlockTrailerSize];
+  Slice contents;
+  Status s = file->Read(handle.offset(), n + kBlockTrailerSize, &contents, buf);
+  if (!s.ok()) {
+    delete[] buf;
+    return s;
+  }
+
+  if (contents.size() != n + kBlockTrailerSize) {
+    delete[] buf;
+    return Status::Corruption("truncated block read");
+  }
+
+
+  const char* data = contents.data();  
+
+  // 数据体的校验
+  if (options.verify_checksums) {
+    const uint32_t crc = crc32c::Unmask(DecodeFixed32(data + n + 1));
+    const uint32_t actual = crc32c::Value(data, n + 1);
+    if (actual != crc) {
+      delete[] buf;
+      s = Status::Corruption("block checksum mismatch");
+      return s;
+    }
+  }
+
+  // 获取压缩类型，如果存在压缩， 变执行压缩操作
+  switch (data[n]) {
+    case kNoCompression:
+      if (data != buf) {
+        delete[] buf;
+        result->data = Slice(data, n);
+        result->heap_allocated = false;
+        result->cachable = false;  // Do not double-cache
+      } else {
+        result->data = Slice(buf, n);
+        result->heap_allocated = true;
+        result->cachable = true;
+      }
+      break;
+    case kSnappyCompression: {
+      size_t ulength = 0;
+      if (!port::Snappy_GetUncompressedLength(data, n, &ulength)) {
+        delete[] buf;
+        return Status::Corruption("corrupted compressed block contents");
+      }
+      char* ubuf = new char[ulength];
+      if (!port::Snappy_Uncompress(data, n, ubuf)) {
+        delete[] buf;
+        delete[] ubuf;
+        return Status::Corruption("corrupted compressed block contents");
+      }
+      delete[] buf;
+      result->data = Slice(ubuf, ulength);
+      result->heap_allocated = true;
+      result->cachable = true;
+      break;
+    }
+    default:
+      delete[] buf;
+      return Status::Corruption("bad block type");
+  }
+
+  return Status::OK();
+}
+
+
+/***
+ * BlockContext 到 Block 的转换
+ */
+ Block::Block(const BlockContents& contents)
+    : data_(contents.data.data()),
+      size_(contents.data.size()),
+      owned_(contents.heap_allocated) {
+
+  if (size_ < sizeof(uint32_t)) {
+    size_ = 0;  // Error marker
+  } else {
+    // 模糊计算最多有多少个重启点
+    size_t max_restarts_allowed = (size_ - sizeof(uint32_t)) / sizeof(uint32_t);
+
+    if (NumRestarts() > max_restarts_allowed) {
+      // The size is too small for NumRestarts()
+      size_ = 0;
+    } else {
+      restart_offset_ = size_ - (1 + NumRestarts()) * sizeof(uint32_t);
+    }
+  }
+}
+```
+
+##### Table 
+
+SST 的读取主要通过 `Table` 类来完成， 它内部提供了 `InternalGet` 方法在这个SST上进行查询用户请求的`key`:
+
+`Status InternalGet(const ReadOptions&, const Slice& key, void* arg, void (*handle_result)(void* arg, const Slice& k, const Slice& v))` 
+
+> 它的查询过程 
+
+1. 查询 IndexBlock 找到所有的 DataBlock的位置信息
+2. 对于每个要查询的DataBlock，首先使用 `BloomFilter` (位于FilterBlock)判断这个数据是否在这个DataBlock中。
+3. 如果判断数据存在， 然后加载这个DataBlock, 使用`Block` 来二分查找这个key.
+
+> 说明 :
+
+**DataBlock 的加载过程维护了一个 LRU 的缓存机制， 对于要加载的DataBlock, Table 首先要去缓存中查看这个Block是否存在，如果不存在，则从文件中读取，并且加载到缓存中，以便于后续的读取。**
+
+```cpp
+/***
+ * 基于回调的方式， 查找某个 key, 如果找到则调用 handle_result(arg, key, value)
+ *
+ * @param options            配置选项
+ * @param k                  key
+ * @param arg                参数
+ * @param handle_result      找到外部数据时候触发的外部调用
+ *
+ */
+Status Table::InternalGet(const ReadOptions& options, const Slice& k, void* arg, void (*handle_result)(void*, const Slice&,const Slice&)) {
+  Status s;
+
+  // IndexBlock 迭代器
+  Iterator* iiter = rep_->index_block->NewIterator(rep_->options.comparator);
+  iiter->Seek(k);   // key_ >= k
+
+  if (iiter->Valid()) {  // 找到这个数据
+    Slice handle_value = iiter->value();         // 定位到 datablock 的位置
+    FilterBlockReader* filter = rep_->filter;    // 获得过滤器
+    BlockHandle handle;
+
+    // 使用 Bloom 过滤器判断一下数据是否在这个 block 里面
+    if (filter != nullptr && handle.DecodeFrom(&handle_value).ok() && !filter->KeyMayMatch(handle.offset(), k)) {
+      // Bloom 过滤器没有找到这个数据
+    } else {
+      // 加载这个 block
+      Iterator* block_iter = BlockReader(this, options, iiter->value());
+      block_iter->Seek(k);
+      if (block_iter->Valid()) {
+        // 找到这个数据，调用回调函数
+        (*handle_result)(arg, block_iter->key(), block_iter->value());
+      }
+      s = block_iter->status();
+      delete block_iter;
+    }
+  }
+
+  if (s.ok()) {
+    s = iiter->status();
+  }
+  delete iiter;
+  return s;
+}
+```
+
+对于 SST 的数据查询与遍历， `Table` 提供了 `TwoLevelIterator`遍历器查询器。
+
+`TwoLevelIterator` 是一个基于两层索引的数据查询器 : 
+
+- 第一层为IndexBlock 的 DataBlock 索引
+- 第二层为DataBlock 的具体数据索引
+
+数据查询与遍历首先通过 IndexBlock 进行粗略定位， 如果定位成功以后，则使用 DataBlock 进行进一步查询。
+
+示例 : 
+
+```cpp
+void TwoLevelIterator::Seek(const Slice& target) {
+  // key >= target, 因为从最小的 key 遍历上来的
+  // 所以如果存在， 肯定在这里
+  index_iter_.Seek(target);
+
+  InitDataBlock();  // 定位到指定的 datablock
+
+  if (data_iter_.iter() != nullptr) data_iter_.Seek(target);  // 从当前 datablock 中定位到 target
+
+  SkipEmptyDataBlocksForward();
+}
+```
