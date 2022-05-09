@@ -11,10 +11,13 @@ tags:
 ---
 
 #### 前言
+leveldb 将持久化的数据分成若干个sst文件来保存， sst 分成若干层，最高到第7层`[0,1,2,3,4,5,6]`
+
+![image.png]({{ site.url }}/assets/leveldb_1_0.jpg)
 
 leveldb 中的每个sst主要有一下功能: 
 
-1. 数据体 : 包含多个 key->value 的数据集合, sst 中的数据是按照 key, 由 **小到大进行排序**
+1. 数据体 : 包含多个 key->value 的数据集合, sst 中的数据是按照 key, 由 **小到大进行排序**。
 2. 数据校验: 使用 `crc` 校验数据完整性
 3. BloomFilter : 用来快速判断对于要查询的 key 是否在这个 sst 中
 4. 数据索引: 对于要查询的key, 如果存在本 sst 中，则使用数据索引快速定位
@@ -53,15 +56,17 @@ DataBlock 用来存储数据实体， 一个 SST 中可能会存在一到多个 
 
 每个 `DataBlock` 中的数据按照 `key` 有序排序。
 
-`DataBlock` 的数据格式如下 ：
+`DataBlock` 的数据格式如下:
 
 ```
- *      | shared_length(Varint32) | unshared_length(Varint32) | value_length(Varint32) | delta_key(string) | value(string) |
- *      | shared_length(Varint32) | unshared_length(Varint32) | value_length(Varint32) | delta_key(string) | value(string) |
- *      。。。。
- *      | shared_length(Varint32) | unshared_length(Varint32) | value_length(Varint32) | delta_key(string) | value(string) |
- *      | restarts_[0](Fixed32) | restarts_[1](Fixed32) | restarts_[2](Fixed32) | ... | restarts_[k](Fixed32) |
- *      | restarts_size(Fixed32) |
+| shared_length(Varint32) | unshared_length(Varint32) | value_length(Varint32) | delta_key(string) | value(string) |
+| shared_length(Varint32) | unshared_length(Varint32) | value_length(Varint32) | delta_key(string) | value(string) |
+       。。。。
+| shared_length(Varint32) | unshared_length(Varint32) | value_length(Varint32) | delta_key(string) | value(string) |
+       
+| restarts_[0](Fixed32) | restarts_[1](Fixed32) | restarts_[2](Fixed32) | ... | restarts_[k](Fixed32) |
+
+| restarts_size(Fixed32) |
 ```
 
 为了减少数据存储，每个Key-Value在 SST 中并不是独立存储，而是引入了共享key的概念。
@@ -75,6 +80,11 @@ DataBlock 用来存储数据实体， 一个 SST 中可能会存在一到多个 
 - `value_length` : value 长度
 - `delta_key` : 非共享 key内容
 - `value` : value 内容
+
+> **这样设计的作用**
+
+1. 数据压缩: 基于共享key的方式，可以减少多数key的数据存储空间，实现数据压缩。
+2. 高效查询: 重启点的存在是为了提高查询效率， 重启点的位置是完整的key, 这样基于重启点的二分查找，首先能粗略定位到key的大致位置，然后在从重启点位置遍历，依次找到key的数据。
 
 每一个 Key-Value 的获取需要首先知道上一个 key 的值， 然后基于 `shared_length`, `unshared_length`, `delta_key` 三个字段便可以求出这个 `key`.
 
