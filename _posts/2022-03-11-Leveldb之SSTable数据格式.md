@@ -16,6 +16,8 @@ leveldb 将持久化的数据分成若干个sst文件来保存， sst 分成若�
 
 ![image.png]({{ site.url }}/assets/leveldb_1_0.jpg)
 
+sst文件名格式为 `{file_number}.ldb`, 
+
 leveldb 中的每个sst主要有一下功能: 
 
 1. 数据体 : 包含多个 key->value 的数据集合, sst 中的数据是按照 key, 由 **小到大进行排序**。
