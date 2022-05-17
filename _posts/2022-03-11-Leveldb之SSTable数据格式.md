@@ -14,9 +14,17 @@ tags:
 
 leveldb 将持久化的数据分成若干个sst文件来保存， sst 分成若干层，最高到第7层`[0,1,2,3,4,5,6]`
 
+sst文件名格式为 `{file_number}.ldb`, 
+
 ![image.png]({{ site.url }}/assets/leveldb_1_0.jpg)
 
-sst文件名格式为 `{file_number}.ldb`, 
+如上所示， leveldb定期将内存中存满的数据落地到磁盘形成SST
+
+- 因为level0层SST是从MemTable中dump下来的，所以SST之间数据可能存在重叠，但是它也有新旧之分，sst文件编码越大，代表sst被刷盘的时间越新。
+- 其他level层同层的sst之间数据是不会重叠的切有序排列，形如 : `[0-49], [50-70], [71-100]`
+- 对于指定的`key`进行查询时，需要从最低的**level**往上查询， 因为对于指定的`key`来说，他所在**sst**的**level**越大，表示数据越旧。
+
+
 
 leveldb 中的每个sst主要有一下功能: 
 
