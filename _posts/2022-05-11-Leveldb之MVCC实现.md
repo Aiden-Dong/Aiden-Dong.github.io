@@ -250,7 +250,7 @@ bool Version::UpdateStats(const GetStats& stats) {
 
 ![image.png]({{ site.url }}/assets/leveldb_4_3.jpg)
 
-##### Compaction构造
+##### Compaction构造 `PickCompaction`
 
 `PickCompaction`会基于压缩阈值来构造`Compaction`。 在这里有一个先后顺序: 
 
@@ -382,5 +382,84 @@ current_->GetOverlappingInputs(level + 1, &smallest, &largest,&c->inputs_[1]);
 AddBoundaryInputs(icmp_, current_->files_[level + 1], &c->inputs_[1]);
 ```
 
-到这里需要合并的level层
+到这里需要合并的`level`层与`level+1`层基本完成,但leveldb在这里又做了一层优化，在不改变`level+1`层sst的现状情况下，尽量扩展`level`层的sst.如上的蓝色部分。这样保证在一次压缩过程中，争取压缩更多的数据。
 
+```cpp
+// inputs_1 非空情况下(空可能是因为这个sst与level+2层重叠的文件超过2M)
+if (!c->inputs_[1].empty()) {
+  std::vector<FileMetaData*> expanded0;
+  // 基于level层与level+1层的所有合并的sst的user_key的上下限
+  // 重新查找level层的sst，想将更多的sst加入到合并列中
+  current_->GetOverlappingInputs(level, &all_start, &all_limit, &expanded0);
+  AddBoundaryInputs(icmp_, current_->files_[level], &expanded0);
+  const int64_t inputs0_size = TotalFileSize(c->inputs_[0]);  // 拿到level层合并的sst的文件量
+  const int64_t inputs1_size = TotalFileSize(c->inputs_[1]);  // 拿到level+1层合并的sst的文件量
+
+  const int64_t expanded0_size = TotalFileSize(expanded0);         // 拿到level层的扩展sst的文件大小
+
+  if (expanded0.size() > c->inputs_[0].size()  // 表示扩展sst是压缩的level层sst的超集
+      && inputs1_size + expanded0_size < ExpandedCompactionByteSizeLimit(options_)) { // level1+level0扩展的合并数据量少于 50M
+
+    InternalKey new_start, new_limit;
+
+    // 获取扩展后的sst的user_key的上下限
+    GetRange(expanded0, &new_start, &new_limit);
+
+    // 重新定位涉及到的level+1层的sst
+    std::vector<FileMetaData*> expanded1;
+    current_->GetOverlappingInputs(level + 1, &new_start, &new_limit, &expanded1);
+    AddBoundaryInputs(icmp_, current_->files_[level + 1], &expanded1);
+
+    // 表示扩展的 user_key 并不会改变 level+1层的要合并的sst的数量
+    if (expanded1.size() == c->inputs_[1].size()) {
+     Log(options_->info_log,
+          "Expanding@%d %d+%d (%ld+%ld bytes) to %d+%d (%ld+%ld bytes)\n",
+          level, int(c->inputs_[0].size()), int(c->inputs_[1].size()),
+          long(inputs0_size), long(inputs1_size), int(expanded0.size()),
+          int(expanded1.size()), long(expanded0_size), long(inputs1_size));
+
+      smallest = new_start;
+      largest = new_limit;
+      c->inputs_[0] = expanded0; // 加入扩展
+      c->inputs_[1] = expanded1;
+      GetRange2(c->inputs_[0], c->inputs_[1], &all_start, &all_limit);
+    }
+  }
+}
+```
+
+如上逻辑，构造完需要合并的`level`层sst与`level+1`层sst. 
+
+`level`层sst对应`inputs_[0]`, `level+1`层sst对应`inputs_[1]`封装成我们需要的`Compaction`。
+
+
+#### 数据Compaction
+
+在`compaction`对象构造完成以后，接下来需要将待压缩数据合并形成新的sst。
+
+如果在`Compaction`里面待压缩对象只在`inputs_[0]`且只有一个sst,表示`level+1`层没有覆盖的sst. 则考虑直接将此sst移动到`level+1`层。
+
+```cpp
+FileMetaData* f = c->input(0, 0);  // 拿到文件
+
+// 将SST从level层直接移动到level+1层
+c->edit()->RemoveFile(c->level(), f->number);
+c->edit()->AddFile(c->level() + 1, f->number, f->file_size, f->smallest, f->largest);
+
+// 更新一个版本
+status = versions_->LogAndApply(c->edit(), &mutex_);
+```
+
+如果存在多个待压缩的sst. 则调用`DoCompactionWork`启动压缩。
+
+**这里对应多个sst会产生一个`MergingIterator`用来基于key顺序同时迭代多个sst**.
+
+然后启动迭代写sst过程。
+
+需要注意的是: 
+
+1. 合并过程中每一个`user_key`会保留有效版本
+2. 写的过程中新的sst如果超过2M，则关闭重新开一个新的sst.
+3. 写的过程中如果与`level+2`层重叠超过20M则关闭重新开一个新的sst.
+
+剩余部分则与[MemTable刷sst](https://aiden-dong.gitee.io/2022/05/09/Leveldb%E4%B9%8B%E6%95%B0%E6%8D%AE%E5%86%99%E5%85%A5%E8%BF%87%E7%A8%8B/)过程大致相同。
