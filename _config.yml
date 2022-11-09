@@ -2,13 +2,13 @@
 title: Aiden Blog
 SEOTitle: Aiden Blog
 header-img: img/post-bg-desk.jpg
-description: "路漫漫其修远兮，吾将上下而求索."
+description: "士不可不弘毅,任重而道远."
 keyword: "Aiden, Aiden Blog, 董涛, 大数据, Linux, Java, Ai"
-url: "http://aiden-dong.gitee.io"          # your host, for absolute URL
+url: "http://aiden-dong.github.io"          # your host, for absolute URL
 baseurl: ""      # for example, '/blog' if your blog hosted on 'host/blog'
 
-github_repo: "https://gitee.com/aiden-dong/aiden-dong" # you code repository
-github_username: aiden-dong
+github_repo: "https://github.com/Aiden-Dong/Aiden-Dong.github.io" # you code repository
+github_username: Aiden-Dong
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
@@ -56,7 +56,7 @@ kramdown:
 
 # Analytics settings
 # Baidu Analytics
-ba_track_id: 6fbcdd884553ff17a61812655eaa0180
+ba_track_id: 08e444bce5922870970f7769f063a570
 #
 # # Google Analytics
 # ga_track_id: 'UA-90855596-1'            # Format: UA-xxxxxx-xx
