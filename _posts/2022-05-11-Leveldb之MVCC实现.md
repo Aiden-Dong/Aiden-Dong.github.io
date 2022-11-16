@@ -10,7 +10,7 @@ tags:
     - olap
 ---
 
-![image.png]({{ site.url }}/assets/leveldb_4_1.jpg)
+![image.png]({{ site.url }}/assets/leveldb_4_1.png)
 
 leveldb 使用`VersionSet`来维护SST的变更记录，SST的变更主要发生在**Compaction**环节，分为**Minor compaction**与**Major compaction**。
 
