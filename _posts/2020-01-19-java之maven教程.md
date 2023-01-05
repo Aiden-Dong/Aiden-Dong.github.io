@@ -5,13 +5,10 @@ subtitle:
 date:       2020-01-19
 author:     Aiden
 header-img: img/java.jpg
-catalog: true 			
-tags:								
+catalog: true
+tags:
     - Java
 ---
-
-
-
 
 ### 1.　pom 文件的信息
 
@@ -19,7 +16,7 @@ tags:
 
 下面是　pom 文件的主要组成。
 
-```
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -44,11 +41,6 @@ tags:
     <profiles>定义运行时参数，用户编译时候可以根据这个设置动态改变编译过程</profiles>
 </project>
 ```
-
-
-
-
-
 
 ### 2. mvn 声明周期
 
@@ -137,7 +129,7 @@ mvn clean package     # 进行　clean 的前两部, default 的操作到　pack
 
 比如我们使用测试可以首先声明:
 
-```
+```xml
 <dependencyManagement>
     <dependencies>
         <!-- https://mvnrepository.com/artifact/junit/junit -->
@@ -153,7 +145,7 @@ mvn clean package     # 进行　clean 的前两部, default 的操作到　pack
 ```
 当我们在这个模块或者它的子模块中想要使用这个依赖的时候，我们就可以在 `dependencies` 中添加定义。
 
-```
+```xml
 <dependency>
     <groupId>junit</groupId>
     <artifactId>junit</artifactId>
@@ -178,10 +170,12 @@ mvn 的构建过程按照声明周期主要包含 :
 这几个过程都有默认的插件来执行，对应的执行 id 如上。
 
 #### 4.1 资源拷贝过程 :
-- 方法一 :
+
+**方法一** :
+
 资源拷贝一般发生在最开始的时候， 当有对应多个输出目录需要拷贝的时候我们可以将 `configuration` 放到 `executions` 里面去。然后在`execution`中添加每一个输出。
 
-```
+```xml
 <plugin>
     <groupId>org.apache.maven.plugins</groupId>
     <artifactId>maven-resources-plugin</artifactId>  <!--使用的拷贝资源插件-->
@@ -234,9 +228,9 @@ mvn 的构建过程按照声明周期主要包含 :
 </plugin>
 ```
 
-- 方法二 :
+**方法二** :
 
-```
+```xml
 <resources>
     <resource>
         <directory>src/main/web</directory>
@@ -262,7 +256,7 @@ mvn 的构建过程按照声明周期主要包含 :
 
 资源准备结束后进入编译过程。
 
-```
+```xml
 <plugin>
      <groupId>org.apache.maven.plugins</groupId>
      <artifactId>maven-compiler-plugin</artifactId>
@@ -277,7 +271,7 @@ mvn 的构建过程按照声明周期主要包含 :
 
 - 编译 scala 方式:
 
-```
+```xml
 <plugin>
     <groupId>org.scala-tools</groupId>
     <artifactId>maven-scala-plugin</artifactId>
@@ -298,7 +292,7 @@ mvn 的构建过程按照声明周期主要包含 :
 
 #### 4.3 编译后进入测试。
 
-```
+```xml
 <plugin>
     <groupId>org.apache.maven.plugins</groupId>
     <artifactId>maven-surefire-plugin</artifactId>
@@ -309,12 +303,11 @@ mvn 的构建过程按照声明周期主要包含 :
 </plugin>
 ```
 
-
 #### 4.4 拷贝依赖
 
 我一般习惯在编译完成后设置依赖的拷贝这时候，其实也可以放在资源拷贝的过程里一起进行。
 
-```
+```xml
 <plugin>
     <groupId>org.apache.maven.plugins</groupId>
     <artifactId>maven-dependency-plugin</artifactId>
@@ -337,12 +330,11 @@ mvn 的构建过程按照声明周期主要包含 :
 </plugin>
 ```
 
-
 #### 4.5 打包过程
 
 打包过程主要定义包含的文件
 
-```
+```xml
 <!--打包过程-->
 <plugin>
     <groupId>org.apache.maven.plugins</groupId>
@@ -358,9 +350,8 @@ mvn 的构建过程按照声明周期主要包含 :
 </plugin>
 ```
 
-
 将依赖也打入一个jar 包中
-```
+```xml
 <plugin>
     <groupId>org.apache.maven.plugins</groupId>
     <artifactId>maven-shade-plugin</artifactId>
@@ -386,7 +377,7 @@ mvn 的构建过程按照声明周期主要包含 :
 
 pom 中定义方式 :
 
-```
+```xml
 <plugin>
     <groupId>org.apache.maven.plugins</groupId>
     <artifactId>maven-assembly-plugin</artifactId>
@@ -414,7 +405,7 @@ pom 中定义方式 :
 
 assembly.xml
 
-```
+```xml
 <assembly>
     <id>bin</id>
     <formats>
@@ -443,4 +434,70 @@ assembly.xml
         </dependencySet>
     </dependencySets>
 </assembly>
+```
+
+### 5. scala 项目构建
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.example</groupId>
+    <artifactId>scala-study</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+        <scala.version>2.12.8</scala.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.scala-lang</groupId>
+            <artifactId>scala-library</artifactId>
+            <version>${scala.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.scala-lang</groupId>
+            <artifactId>scala-compiler</artifactId>
+            <version>${scala.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.scala-lang</groupId>
+            <artifactId>scala-reflect</artifactId>
+            <version>${scala.version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.scala-tools</groupId>
+                <artifactId>maven-scala-plugin</artifactId>
+                <version>2.15.2</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>compile</goal>
+                            <goal>testCompile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
 ```
