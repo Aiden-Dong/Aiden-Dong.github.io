@@ -7,7 +7,7 @@ author:     Aiden
 header-img: img/data-stream.jpg
 catalog: true
 tags:  
-    - spark
+    - olap
 --- 
 Hadoop MapReduce 任务读取主要是通过 InputFormat 类来完成的， 他主要的功能是将要读取的文件集合切分成多个分片，每一个分片对应一个数据读取任务。
 

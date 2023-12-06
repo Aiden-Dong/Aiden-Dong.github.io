@@ -7,7 +7,7 @@ author:     Aiden
 header-img: img/data-stream.jpg
 catalog: true
 tags:  
-    - spark
+    - olap
 --- 
 过上篇 [SparkRDD解读文章](https://aiden-dong.github.io/2023/08/26/SparkRDD-%E8%A7%A3%E8%AF%BB/) 我们可以了解到，对于每个 `ShuffleDependency`会生成 `ShuffleMapStage`，`ShuffleMapStage` 对应生成 `ShuffleMapTask`。
 
